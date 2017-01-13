@@ -259,7 +259,8 @@ double VitezaInMetruPeSecunda(double masin,char unitmasin[])
     else cout<<"\n***Ati introdus gresit unitatea de masura din care doriti sa transformati***\n";
 }
 double metruPesecundaInViteza(double valoare,char unitmasfin[])
-{if(stricmp(unitmasfin,"cm/s")==0)
+{
+    if(stricmp(unitmasfin,"cm/s")==0)
         return valoare*100;
     else if(stricmp(unitmasfin,"ft/s")==0)
         return valoare*3.28083;
@@ -441,6 +442,7 @@ double PresiuneInPascal(double masin,char unitmasin[])
         return masin*6894.75729317;
     else if(stricmp(unitmasin,"torr")==0)
         return masin*133.322368421;
+    else cout<<"\n***Ati introdus gresit unitatea de masura din care doriti sa transformati***\n";
 
 }
 double PascalInPresiune(double valoare,char unitmasfin[])
@@ -477,14 +479,107 @@ double PascalInPresiune(double valoare,char unitmasfin[])
         return valoare*0.00014503773773017476;
     else if(stricmp(unitmasfin,"torr")==0)
         return valoare*0.007500616827044659;
+    else cout<<"\n***Ati introdus gresit unitatea de masura in care doriti sa fie transformarea***\n";
 
+}
+double DensitateInKilogram(double masin,char unitmasin[])
+{
+    if(stricmp(unitmasin,"kg/m^3")==0)
+        return masin;
+    else if(stricmp(unitmasin,"g/cm^3")==0)
+        return masin*1000;
+    else if(stricmp(unitmasin,"g/l")==0)
+        return masin;
+    else if(stricmp(unitmasin,"g/m^3")==0)
+        return masin*0.001;
+    else if(stricmp(unitmasin,"g/mm^3")==0)
+        return masin*1000000;
+    else if(stricmp(unitmasin,"g/ml")==0)
+        return masin*1000;
+    else if(stricmp(unitmasin,"kg/cm^3")==0)
+        return masin*1000000;
+    else if(stricmp(unitmasin,"kg/l")==0)
+        return masin*1000;
+    else if(stricmp(unitmasin,"mg/cm^3")==0)
+        return masin;
+    else if(stricmp(unitmasin,"mg/m^3")==0)
+        return masin*0.000001;
+    else if(stricmp(unitmasin,"oz/ft^3")==0)
+        return masin*1.001153961;
+    else if(stricmp(unitmasin,"oz/in^3")==0)
+        return masin*1729.994044;
+    else if(stricmp(unitmasin,"t/m^3")==0)
+        return masin*1000;
+    else cout<<"\n***Ati introdus gresit unitatea de masura din care doriti sa transformati***\n";
+}
+double KilogramInDensitate(double valoare,char unitmasfin[])
+{
+    if(stricmp(unitmasfin,"kg/m^3")==0)
+        return valoare;
+    else if(stricmp(unitmasfin,"g/cm^3")==0)
+        return valoare*0.001;
+    else if(stricmp(unitmasfin,"g/l")==0)
+        return valoare;
+    else if(stricmp(unitmasfin,"g/m^3")==0)
+        return valoare*1000;
+    else if(stricmp(unitmasfin,"g/mm^3")==0)
+        return valoare*0.000001;
+    else if(stricmp(unitmasfin,"g/ml")==0)
+        return valoare*0.001;
+    else if(stricmp(unitmasfin,"kg/cm^3")==0)
+        return valoare*0.000001;
+    else if(stricmp(unitmasfin,"kg/l")==0)
+        return valoare*0.001;
+    else if(stricmp(unitmasfin,"mg/cm^3")==0)
+        return valoare;
+    else if(stricmp(unitmasfin,"mg/m^3")==0)
+        return valoare*1000000;
+    else if(stricmp(unitmasfin,"oz/ft^3")==0)
+        return valoare*0.9988473690911163;
+    else if(stricmp(unitmasfin,"oz/in^3")==0)
+        return valoare*0.0005780366721308782;
+    else if(stricmp(unitmasfin,"t/m^3")==0)
+        return valoare*0.001;
+    else cout<<"\n***Ati introdus gresit unitatea de masura in care doriti sa fie transformarea***\n";
+}
+double CombustibilInLitru(double masin,char unitmasin[])
+{
+    if(stricmp(unitmasin,"l/100km")==0)
+        return masin;
+    else if(stricmp(unitmasin,"km/l")==0)
+        return 100/masin;
+    else if(stricmp(unitmasin,"mi/gal")==0)
+        return 282.481053/masin;
+    else if(stricmp(unitmasin,"gal/100mi")==0)
+        return masin*2.352;
+    else if(stricmp(unitmasin,"mi/l")==0)
+        return 62.137119224/masin;
+    else if(stricmp(unitmasin,"l/100mi")==0)
+        return masin*0.6214;
+}
+double LitruInCombustibil(double valoare, char unitmasfin[])
+{
+    if(stricmp(unitmasfin,"l/100km")==0)
+        return valoare;
+    else if(stricmp(unitmasfin,"km/l")==0)
+        return 100/valoare;
+    else if(stricmp(unitmasfin,"mi/gal")==0)
+        return 282.481053/valoare;
+    else if(stricmp(unitmasfin,"gal/100mi")==0)
+        return valoare*0.4251;
+    else if(stricmp(unitmasfin,"mi/l")==0)
+        return 62.137119224/valoare;
+    else if(stricmp(unitmasfin,"l/100mi")==0)
+        return valoare*1.609;
 }
 void transformare(double &masin,double &masfin,char unitmasin[], char unitmasfin[],char domeniu[])
 {
     double valoare;
     if(stricmp(domeniu,"Arie")==0)
-    {valoare=ArieInMetru(masin,unitmasin);
-    masfin=metruInArie(valoare,unitmasfin);}
+    {
+        valoare=ArieInMetru(masin,unitmasin);
+        masfin=metruInArie(valoare,unitmasfin);
+    }
     else if(stricmp(domeniu,"Lungime")==0)
     {
         valoare=LungimeInMetru(masin,unitmasin);
@@ -513,9 +608,7 @@ void transformare(double &masin,double &masfin,char unitmasin[], char unitmasfin
     else if(stricmp(domeniu,"Masa")==0)
     {
         valoare=MasaInGrame(masin,unitmasin);
-        //cout<<endl<<std::setprecision(15)<<valoare<<endl;
         masfin=GrameInMasa(valoare,unitmasfin);
-        //cout<<endl<<std::setprecision(15)<<masfin<<endl;
     }
     else if(stricmp(domeniu,"Energie")==0)
     {
@@ -527,25 +620,47 @@ void transformare(double &masin,double &masfin,char unitmasin[], char unitmasfin
         valoare=PresiuneInPascal(masin,unitmasin);
         masfin=PascalInPresiune(valoare,unitmasfin);
     }
+    else if(stricmp(domeniu,"Densitate")==0)
+    {
+        valoare=DensitateInKilogram(masin,unitmasin);
+        masfin=KilogramInDensitate(valoare,unitmasfin);
+    }
+    else if(stricmp(domeniu,"Consum Combustibil")==0)
+    {
+        valoare=CombustibilInLitru(masin,unitmasin);
+        masfin=LitruInCombustibil(valoare,unitmasfin);
+    }
 }
 void afisare(double masin,double &masfin,char unitmasin[],char unitmasfin[])
 {
     cout<<endl;
     cout.precision(15);
+    cout<<"***************************\n";
     cout<<masin<<" "<<unitmasin<<"=";
     if(masfin>=0.0001)
-     cout<<masfin<<" "<<unitmasfin;
+        cout<<masfin<<" "<<unitmasfin;
     else
-     cout<<fixed<<masfin<<" "<<unitmasfin;
+        cout<<fixed<<masfin<<" "<<unitmasfin;
+    cout<<"\n***************************";
 }
 
 int main()
 {
     double masin,masfin;
     char unitmasin[25],unitmasfin[25], domeniu[25];
-    citire(masin,unitmasin,unitmasfin,domeniu);
-    transformare(masin,masfin,unitmasin,unitmasfin,domeniu);
-    afisare(masin,masfin,unitmasin,unitmasfin);
+    int ok=1;
+    while(ok==1)
+    {
+        citire(masin,unitmasin,unitmasfin,domeniu);
+        transformare(masin,masfin,unitmasin,unitmasfin,domeniu);
+        afisare(masin,masfin,unitmasin,unitmasfin);
+        cout<<"\nDaca doriti sa continuati apasati 1";
+        cout<<"\nDaca nu mai doriti sa continuati apasati 0\n";
+        cin>>ok;
+        if(ok==0)
+            cout<<"\nLa revedere!";
+        else cin.get();
+    }
 
 
     return 0;
